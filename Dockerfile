@@ -13,7 +13,7 @@ COPY uv.lock .
 RUN pip install uv
 
 # 의존성 설치
-RUN uv sync
+RUN uv sync --all-extras
 
 # 서버 실행
 CMD ["uv", "run", "python3", "server.py"]

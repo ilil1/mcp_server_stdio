@@ -1,0 +1,15 @@
+runtime: "container"  # Docker 컨테이너 기반 배포
+build:
+  dockerfile: "Dockerfile"  # Dockerfile 경로
+  dockerBuildPath: "."  # 빌드 컨텍스트 (현재 디렉토리)
+startCommand:
+  type: "http"  # HTTP 타입 서버
+  configSchema:  # 구성 JSON 스키마 (필수/선택 속성 정의)
+    type: "object"
+    properties:
+      apiKey:  # 예시: apiKey를 필수로 지정 (실제 프로젝트에 맞게 조정)
+        type: "string"
+        description: "Your API key"
+    required: ["apiKey"]  # apiKey 필수
+  exampleConfig:  # 예시 구성
+    apiKey: "sk-example123"
