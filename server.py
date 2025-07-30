@@ -17,7 +17,7 @@ def validate_test_sc() -> str:
 
 
 if __name__ == "__main__":
-    print("Starting MCP server...")
+    print("Starting MCP server...", file=sys.stderr)  # stderr로 변경
 
     # PORT 환경 변수 사용: Smithery 호환
     port = int(os.environ.get('PORT', 8000))  # 컨테이너에서 PORT 읽음, 로컬 시 8000 fallback
@@ -25,7 +25,7 @@ if __name__ == "__main__":
     # uvicorn.run에 타임아웃 설정 추가 (기본 30초, 필요 시 조정)
     uvicorn.run(mcp.streamable_http_app(), host="0.0.0.0", port=port, log_level="info", timeout_keep_alive=60)
 
-    print("Server stopped")
+    print("Server stopped", file=sys.stderr)  # stderr로 변경
 
     # if __name__ == "__main__":
     #     print("Starting MCP server...", file=sys.stderr)
