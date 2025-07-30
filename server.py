@@ -18,9 +18,9 @@ def validate_test_sc() -> str:
 if __name__ == "__main__":
     print("Starting MCP server...", file=sys.stderr)
 
-    # HTTP 모드로 변경: Smithery 배포 호환
-    port = int(os.environ.get("PORT", 8000))  # Smithery가 PORT 할당
-    mcp.run(transport="streamable-http")
+    # Streamable HTTP 모드로 변경
+    port = int(os.environ.get("PORT", 8000))  # Smithery PORT 사용
+    mcp.run(transport="streamable-http", host="0.0.0.0", port=port)  # host/port 추가 (path는 내부 기본 /mcp)
 
     print("Server stopped", file=sys.stderr)
 
