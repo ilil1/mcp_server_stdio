@@ -20,7 +20,7 @@ if __name__ == "__main__":
 
     # HTTP 모드로 변경: Smithery 배포 호환
     port = int(os.environ.get("PORT", 8000))  # Smithery가 PORT 할당
-    mcp.run(transport="streamable-http", host="0.0.0.0", port=port, path="/mcp")
+    mcp.run(transport="streamable-http")
 
     print("Server stopped", file=sys.stderr)
 
