@@ -1,7 +1,3 @@
-import os
-import sys
-
-import uvicorn
 from mcp.server.fastmcp import FastMCP
 
 mcp = FastMCP("mcp_project")
@@ -16,18 +12,7 @@ def validate_test_sc() -> str:
     return "성공"
 
 if __name__ == "__main__":
-    try:
-        port = int(os.environ.get('PORT', 8000))
-        app = mcp.streamable_http_app()
-        uvicorn.run(app, host="0.0.0.0", port=port, log_level="info", timeout_keep_alive=60)
-    except Exception as e:
-        raise
-
-    # if __name__ == "__main__":
-    #     print("Starting MCP server...", file=sys.stderr)
-    #
-    #     # Streamable HTTP 모드로 변경
-    #     port = int(os.environ.get("PORT", 8000))  # Smithery PORT 사용
-    #     mcp.run(transport="streamable-http", host="0.0.0.0", port=port)  # host/port 추가 (path는 내부 기본 /mcp)
-    #
-    #     print("Server stopped", file=sys.stderr)
+    import sys
+    print("Starting MCP server...", file=sys.stderr)
+    mcp.run()
+    print("Server stopped", file=sys.stderr)
